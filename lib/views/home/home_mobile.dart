@@ -1,40 +1,75 @@
 part of home_view;
 
+
+
 class _HomeMobile extends StatelessWidget {
   final HomeViewModel viewModel;
+  final NavigatorService _navigationService = locator<NavigatorService>();
 
   _HomeMobile(this.viewModel);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Mobile', style: TextStyle(color: Colors.black )),
-        backgroundColor: Colors.amber[100],
-      ),
+      appBar: AppBar(centerTitle: true, title: Text('Календарь платежей'),),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times: ',
-              style: TextStyle(fontSize: 14),
-            ),
-            Text(
-              '${viewModel.counter}',
-              style: Theme.of(context).textTheme.display1,
-            ),
-            RaisedButton(child: Text('press'), onPressed: ()=>{
-              locator<NavigatorService>().navigateToPage(MaterialPageRoute(builder: (context) => AddAndEditView(),))
-            },)
+            CalendarW(),
+            Expanded(
+              //height: 170,
+              child: ListView(
+                //padding: const EdgeInsets.all(8),
+                children: <Widget>[
+                  Container(
+                    height: 50,
+                    color: Colors.amber[600],
+                    child: const Center(child: Text('Entry A')),
+                  ),
+                  Container(
+                    height: 50,
+                    color: Colors.amber[500],
+                    child: const Center(child: Text('Entry B')),
+                  ),
+                  Container(
+                    height: 50,
+                    color: Colors.amber[100],
+                    child: const Center(child: Text('Entry C')),
+                  ),
+                  Container(
+                    height: 50,
+                    color: Colors.amber[600],
+                    child: const Center(child: Text('Entry A')),
+                  ),
+                  Container(
+                    height: 50,
+                    color: Colors.amber[500],
+                    child: const Center(child: Text('Entry B')),
+                  ),
+                  Container(
+                    height: 50,
+                    color: Colors.amber[100],
+                    child: const Center(child: Text('Entry C')),
+                  ),
+                ],
+              ),)
+            
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: viewModel.increment,
-        backgroundColor: Colors.black,
+      bottomNavigationBar: BottomAppBar(
+        shape: const CircularNotchedRectangle(),
+        child: Container(height: 50.0,),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          _navigationService.navigateTo(AddAndEditViewRoute);
+        },
+        tooltip: 'Increment',
+        child: Icon(Icons.add),
+      ), 
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
     );
   }
 }

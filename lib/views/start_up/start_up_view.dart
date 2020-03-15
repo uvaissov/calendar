@@ -19,7 +19,6 @@ class StartUpView extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Text('start'),
               SizedBox(
                 width: 300,
                 height: 100,

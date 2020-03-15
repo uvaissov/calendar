@@ -10,6 +10,12 @@ class NavigatorService extends BaseService {
         .pushNamed(routeName, arguments: arguments);
   }
 
+  Future<dynamic> navigateToAndRemoveUntil(String routeName) {
+    log.i('routeName: $routeName');
+    return navigatorKey.currentState
+        .pushNamedAndRemoveUntil(routeName, (Route<dynamic> route) => false);
+  }
+
   Future<T> navigateToPage<T>(MaterialPageRoute<T> pageRoute) async {
     log.i('navigateToPage: pageRoute: ${pageRoute.settings.name}');
     if (navigatorKey.currentState == null) {

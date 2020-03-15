@@ -8,7 +8,7 @@ class _AddAndEditMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text('AddAndEditMobile')),
+      body: Center(child: Text('AddAndEditMobile1')),
     );
   }
 }

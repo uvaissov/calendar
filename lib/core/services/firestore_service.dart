@@ -1,6 +1,7 @@
 import 'dart:async';
 
-import 'package:calendar/core/models/post.dart';
+import 'package:calendar/core/models/document.dart';
+import 'package:calendar/core/models/document.dart';
 import 'package:calendar/core/models/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
@@ -11,8 +12,8 @@ class FirestoreService {
   final CollectionReference _postsCollectionReference =
       Firestore.instance.collection('posts');
 
-  final StreamController<List<Post>> _postsController =
-      StreamController<List<Post>>.broadcast();
+  final StreamController<List<Document>> _postsController =
+      StreamController<List<Document>>.broadcast();
 
   Future createUser(User user) async {
     try {
@@ -41,7 +42,7 @@ class FirestoreService {
     }
   }
 
-  Future addPost(Post post) async {
+  Future addDocument(Document post) async {
     try {
       await _postsCollectionReference.add(post.toMap());
     } catch (e) {
@@ -54,12 +55,12 @@ class FirestoreService {
     }
   }
 
-  Future getPostsOnceOff() async {
+  Future getDocumentOnceOff() async {
     try {
       var postDocumentSnapshot = await _postsCollectionReference.getDocuments();
       if (postDocumentSnapshot.documents.isNotEmpty) {
         return postDocumentSnapshot.documents
-            .map((snapshot) => Post.fromMap(snapshot.data, snapshot.documentID))
+            .map((snapshot) => Document.fromMap(snapshot.data, snapshot.documentID))
             .where((mappedItem) => mappedItem.title != null)
             .toList();
       }
@@ -73,12 +74,12 @@ class FirestoreService {
     }
   }
 
-  Stream listenToPostsRealTime() {
+  Stream listenToDocumentRealTime() {
     // Register the handler for when the posts data changes
     _postsCollectionReference.snapshots().listen((postsSnapshot) {
       if (postsSnapshot.documents.isNotEmpty) {
         var posts = postsSnapshot.documents
-            .map((snapshot) => Post.fromMap(snapshot.data, snapshot.documentID))
+            .map((snapshot) => Document.fromMap(snapshot.data, snapshot.documentID))
             .where((mappedItem) => mappedItem.title != null)
             .toList();
 
@@ -94,7 +95,7 @@ class FirestoreService {
     await _postsCollectionReference.document(documentId).delete();
   }
 
-  Future updatePost(Post post) async {
+  Future updateDocument(Document post) async {
     try {
       await _postsCollectionReference
           .document(post.documentId)

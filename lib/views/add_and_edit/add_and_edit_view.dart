@@ -1,5 +1,6 @@
 library add_and_edit_view;
 
+import 'package:calendar/core/models/document.dart';
 import 'package:provider_architecture/provider_architecture.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:flutter/material.dart';
@@ -10,13 +11,16 @@ part 'add_and_edit_tablet.dart';
 part 'add_and_edit_desktop.dart';
 
 class AddAndEditView extends StatelessWidget {
+  final Document edittingDocument;
+  AddAndEditView({ Key key, this.edittingDocument }): super(key: key);
+
   @override
   Widget build(BuildContext context) {
     AddAndEditViewModel viewModel = AddAndEditViewModel();
     return ViewModelProvider<AddAndEditViewModel>.withConsumer(
       viewModel: viewModel,
       onModelReady: (viewModel) {
-        // Do something once your viewModel is initialized
+        viewModel.setEdittingDocument(edittingDocument);
       },
       builder: (context, viewModel, child) {
         return ScreenTypeLayout(
