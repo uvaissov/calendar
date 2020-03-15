@@ -31,8 +31,7 @@ class AuthenticationService {
   Future signUpWithEmail({
     @required String email,
     @required String password,
-    @required String fullName,
-    @required String role,
+    @required String fullName
   }) async {
     try {
       var authResult = await _firebaseAuth.createUserWithEmailAndPassword(
