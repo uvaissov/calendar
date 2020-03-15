@@ -1,4 +1,4 @@
-package com.example.calendar
+package kz.uvaissov.calendar
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

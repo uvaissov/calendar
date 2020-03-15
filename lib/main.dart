@@ -1,24 +1,35 @@
+import 'package:calendar/core/services/dialog_service.dart';
+import 'package:calendar/widgets/dialog_manager.dart';
+
+import 'core/locator.dart';
+import 'core/providers.dart';
+import 'core/router.dart';
+import 'core/services/navigator_service.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import './src/pages/HomePage.dart';
+import 'views/start_up/start_up_view.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  await LocatorInjector.setupLocator();
+  runApp(MainApplication());
+}
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class MainApplication extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      //title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return MultiProvider(
+      providers: ProviderInjector.providers,
+      child: MaterialApp(
+        builder: (context, child) => Navigator(
+          key: locator<DialogService>().dialogNavigationKey,
+          onGenerateRoute: (settings) => MaterialPageRoute(
+              builder: (context) => DialogManager(child: child)),
+        ),
+        navigatorKey: locator<NavigatorService>().navigatorKey,
+        home: StartUpView(),
+        onGenerateRoute: generateRoute,
       ),
-      routes: {
-        '/' : (BuildContext context) => HomePage()
-      },
-      initialRoute: '/',
     );
   }
 }
-
-
