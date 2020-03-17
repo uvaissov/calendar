@@ -20,7 +20,8 @@ class AddAndEditView extends StatelessWidget {
     return ViewModelProvider<AddAndEditViewModel>.withConsumer(
       viewModel: viewModel,
       onModelReady: (viewModel) {
-        viewModel.setEdittingDocument(edittingDocument);
+        viewModel.edittingDocument = this.edittingDocument;
+        viewModel.stepsLength = 3;
       },
       builder: (context, viewModel, child) {
         return ScreenTypeLayout(

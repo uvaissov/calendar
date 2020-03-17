@@ -65,7 +65,7 @@ class _InputFieldState extends State<InputField> {
           child: Row(
             children: <Widget>[
               Expanded(
-                child: TextFormField(
+                child: TextFormField(                  
                   controller: widget.controller,
                   keyboardType: widget.textInputType,
                   focusNode: widget.fieldFocusNode,

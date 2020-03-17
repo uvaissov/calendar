@@ -20,7 +20,7 @@ class StartUpViewModel extends BaseViewModel {
     log.i('hasLoggedInUser $hasLoggedInUser');
     if (hasLoggedInUser) {
       //_navigationService.navigateTo(HomeViewRoute);
-      _navigationService.navigateToAndRemoveUntil(HomeViewRoute, HomeViewRoute);
+      _navigationService.navigateToAndRemoveUntil(HomeViewRoute);
     } else {
       _navigationService.navigateTo(LoginViewRoute);
     }

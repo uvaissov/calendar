@@ -8,6 +8,15 @@ class _HomeMobile extends StatelessWidget {
 
   _HomeMobile(this.viewModel);
 
+  BoxDecoration myBoxDecoration() {
+  return BoxDecoration(
+    border: Border.all( color: Colors.grey[200], width: 2 ),
+    borderRadius: BorderRadius.all(
+        Radius.circular(5.0) //         <--- border radius here
+    )
+  );
+}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,42 +25,48 @@ class _HomeMobile extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            CalendarW(),
+            Container(             
+              child: CalendarW(),
+            ),    
+            Divider(),
             Expanded(
               //height: 170,
               child: ListView(
                 //padding: const EdgeInsets.all(8),
                 children: <Widget>[
-                  Container(
-                    height: 50,
-                    color: Colors.amber[600],
-                    child: const Center(child: Text('Entry A')),
-                  ),
-                  Container(
-                    height: 50,
-                    color: Colors.amber[500],
-                    child: const Center(child: Text('Entry B')),
-                  ),
-                  Container(
-                    height: 50,
-                    color: Colors.amber[100],
-                    child: const Center(child: Text('Entry C')),
-                  ),
-                  Container(
-                    height: 50,
-                    color: Colors.amber[600],
-                    child: const Center(child: Text('Entry A')),
-                  ),
-                  Container(
-                    height: 50,
-                    color: Colors.amber[500],
-                    child: const Center(child: Text('Entry B')),
-                  ),
-                  Container(
-                    height: 50,
-                    color: Colors.amber[100],
-                    child: const Center(child: Text('Entry C')),
-                  ),
+                  Card(
+                    child: ListTile(
+                      leading: Icon(Icons.ac_unit),
+                      title: Text('asd'),
+                      onTap: () {
+                        print('Sun');
+                      }
+                  )),
+                  Card(
+                    child: ListTile(
+                    leading: Icon(Icons.ac_unit),
+                    title: Text('asd'),
+                  )),
+                  Card(
+                    child: ListTile(
+                    leading: Icon(Icons.ac_unit),
+                    title: Text('asd'),
+                  )),
+                  Card(
+                    child: ListTile(
+                    leading: Icon(Icons.ac_unit),
+                    title: Text('asd'),
+                  )),
+                  Card(
+                    child: ListTile(
+                    leading: Icon(Icons.ac_unit),
+                    title: Text('asd'),
+                  )),
+                  Card(
+                    child: ListTile(
+                    leading: Icon(Icons.ac_unit),
+                    title: Text('asd'),
+                  )),
                 ],
               ),)
             
