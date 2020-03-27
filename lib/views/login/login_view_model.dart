@@ -39,7 +39,7 @@ class LoginViewModel extends BaseViewModel {
       }
     } else {
       await _dialogService.showDialog(
-        title: 'Login Failure',
+        title: 'Ошибка при авторизации',
         description: result,
       );
     }

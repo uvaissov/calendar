@@ -1,11 +1,6 @@
 part of add_and_edit_view;
 
-class _AddAndEditMobile extends StatelessWidget {
-  final AddAndEditViewModel viewModel;
-  final titleController = TextEditingController();
-  _AddAndEditMobile(this.viewModel);
-  
-  List<Step> steps = [
+List<Step> steps = [
     Step(
       title: const Text('New Account'),
       isActive: true,
@@ -49,6 +44,13 @@ class _AddAndEditMobile extends StatelessWidget {
       ),
     ),
   ];
+
+class _AddAndEditMobile extends StatelessWidget {
+  final AddAndEditViewModel viewModel;
+  final titleController = TextEditingController();
+  _AddAndEditMobile(this.viewModel);
+  
+  
 
   @override
   Widget build(BuildContext context) {

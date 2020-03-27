@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:calendar/core/models/document.dart';
-import 'package:calendar/core/models/document.dart';
 import 'package:calendar/core/models/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
