@@ -1,3 +1,4 @@
+import 'package:calendar/shared/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:calendar/shared/shared_styles.dart';
@@ -20,9 +21,11 @@ class InputField extends StatefulWidget {
   final String additionalNote;
   final Function(String) onChanged;
   final TextInputFormatter formatter;
+  final String initialValue;
 
   InputField(
-      {@required this.controller,
+      {
+      this.controller,
       @required this.placeholder,
       this.enterPressed,
       this.fieldFocusNode,
@@ -30,6 +33,7 @@ class InputField extends StatefulWidget {
       this.additionalNote,
       this.onChanged,
       this.formatter,
+      this.initialValue,
       this.validationMessage,
       this.textInputAction = TextInputAction.next,
       this.textInputType = TextInputType.text,
@@ -56,8 +60,8 @@ class _InputFieldState extends State<InputField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Container(
-          height: widget.smallVersion ? 40 : fieldHeight,
+        Container(          
+          height: widget.smallVersion ? 40 : fieldHeight,          
           alignment: Alignment.centerLeft,
           padding: fieldPadding,
           decoration:
@@ -65,12 +69,14 @@ class _InputFieldState extends State<InputField> {
           child: Row(
             children: <Widget>[
               Expanded(
-                child: TextFormField(                  
+                child: TextFormField(  
+                  style: TextStyle( color: textColor ),
                   controller: widget.controller,
                   keyboardType: widget.textInputType,
                   focusNode: widget.fieldFocusNode,
                   textInputAction: widget.textInputAction,
                   onChanged: widget.onChanged,
+                  initialValue: widget.initialValue,
                   inputFormatters:
                       widget.formatter != null ? [widget.formatter] : null,
                   onEditingComplete: () {
@@ -86,10 +92,10 @@ class _InputFieldState extends State<InputField> {
                   },
                   obscureText: isPassword,
                   readOnly: widget.isReadOnly,
-                  decoration: InputDecoration.collapsed(
-                      hintText: widget.placeholder,
+                  decoration: InputDecoration.collapsed(                    
+                      hintText: widget.placeholder,                      
                       hintStyle:
-                          TextStyle(fontSize: widget.smallVersion ? 12 : 15)),
+                          TextStyle(fontSize: widget.smallVersion ? 12 : 15, color: textColorLight)),
                 ),
               ),
               GestureDetector(

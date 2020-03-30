@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const Color shadowColor = Color.fromRGBO(80, 137, 196, 0.47);
+const Color cardShadowColor = Color.fromRGBO(228, 229, 231, 0.25);
 const Color blueColor = Color.fromRGBO(96, 205, 255, 1);
 const Color blueColorLigth = Color.fromRGBO(96, 205, 255, 0.536);
 const Color redColor = Color.fromRGBO(255, 98, 96, 1);

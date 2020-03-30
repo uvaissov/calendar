@@ -1,3 +1,4 @@
+import 'package:calendar/shared/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class NoteText extends StatelessWidget {
@@ -15,7 +16,7 @@ class NoteText extends StatelessWidget {
       style: TextStyle(
         fontSize: fontSize ?? 12,
         fontWeight: FontWeight.normal,
-        color: color ?? Colors.grey[600],
+        color: color ?? dayColor,
       ),
     );
   }

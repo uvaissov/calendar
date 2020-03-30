@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 
 import 'package:table_calendar/table_calendar.dart';
 
-class CalendarW extends StatefulWidget {
-  CalendarW({Key key}) : super(key: key);
+class CalendarWidget extends StatefulWidget {
+  CalendarWidget({Key key}) : super(key: key);
   @override
-  _CalendarWState createState() => _CalendarWState();
+  _CalendarWidgetState createState() => _CalendarWidgetState();
 }
 
-class _CalendarWState extends State<CalendarW> { 
+class _CalendarWidgetState extends State<CalendarWidget> { 
   CalendarController _calendarController;
 
   @override

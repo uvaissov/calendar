@@ -1,3 +1,4 @@
+import 'package:calendar/shared/app_colors.dart';
 import 'package:calendar/shared/shared_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -29,11 +30,12 @@ class _BusyButtonState extends State<BusyButton> {
           duration: const Duration(milliseconds: 300),
           alignment: Alignment.center,
           padding: EdgeInsets.symmetric(
-              horizontal: widget.busy ? 10 : 15,
-              vertical: widget.busy ? 10 : 10),
+              horizontal: widget.busy ? 10 : 25,
+              vertical: widget.busy ? 10 : 15),
           decoration: BoxDecoration(
-            color: widget.enabled ? Colors.grey[800] : Colors.grey[300],
-            borderRadius: BorderRadius.circular(5),
+            color: widget.enabled ? blueColor : blueColorLigth,
+            borderRadius: BorderRadius.circular(7),
+            boxShadow: [mainShadowBox]      
           ),
           child: !widget.busy
               ? Text(

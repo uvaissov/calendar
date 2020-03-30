@@ -6,6 +6,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   cupertino_icons: ^0.1.2
   table_calendar: ^2.2.2
   provider_architecture: ^1.0.3
@@ -16,6 +18,7 @@ dependencies:
   equatable: ^1.0.1
   firebase_auth: ^0.15.3
   cloud_firestore: ^0.13.0+1
+  intl: ^0.16.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -27,6 +30,8 @@ flutter:
   assets:
     - assets/images/title.png
     - assets/images/icon_large.png
+    - assets/lang/en.json
+    - assets/lang/ru.json
       
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

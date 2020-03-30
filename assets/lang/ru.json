@@ -1,0 +1,12 @@
+{
+    "main.emptyList.title": "Список пуст",
+    "main.emptyList.firstPaymentNotAdded": "Необходимо добавить первый платеж",
+    "edit.period.title": "Периодичность платежей",
+    "edit.period.year": "Ежегодный",
+    "edit.period.quarter": "Ежеквартальный",
+    "edit.period.month": "Ежемесячный",
+    "edit.period.week": "Еженедельный",
+    "edit.period.periodCount": "Всего периодов",
+    "edit.period.perPeriodSum": "Сумма платежа за период"
+    
+}

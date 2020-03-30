@@ -1,7 +1,5 @@
 part of home_view;
 
-final items = List<String>.generate(10, (i) => "Item ${i+1}");
-
 class _HomeMobile extends StatelessWidget {
   final HomeViewModel viewModel;
   final NavigatorService _navigationService = locator<NavigatorService>();
@@ -10,30 +8,50 @@ class _HomeMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: backgroundColor,
       body: SafeArea(
         child: ListView(
           children: <Widget>[
             CardContainer(
-                child: CalendarW(),
+              child: CalendarWidget(),
             ),
-            Card(
-                child: ListTile(
-                    leading: Text('17', style: TextStyle(fontSize: 37),),
-                    title: Text('Title ' ),
-                    subtitle: Text('afddd'),
-                    onTap: () {
-                      print('Sun');
-                    }))
-          ],          
-            
+            EmptyListCard(),
+            // Card(
+            //     child: ListTile(
+            //         leading: Text(
+            //           '17',
+            //           style: TextStyle(fontSize: 37),
+            //         ),
+            //         title: Text('Title '),
+            //         subtitle: Text('afddd'),
+            //         onTap: () {
+            //           print('Sun');
+            //         }))
+          ],
         ),
       ),
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
         child: Container(
           height: 50.0,
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              IconButton(
+                icon: Icon(Icons.calendar_today, color: textColor,),
+                onPressed: () {
+                  print('onPressed calendar_today');
+                },
+              ),
+              IconButton(
+                icon: Icon(Icons.list, color: textColor,),
+                onPressed: () {},
+              ),
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -44,7 +62,7 @@ class _HomeMobile extends StatelessWidget {
         backgroundColor: blueColor,
         child: Icon(Icons.add),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 

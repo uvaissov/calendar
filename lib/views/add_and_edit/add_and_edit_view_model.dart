@@ -5,6 +5,8 @@ import 'package:calendar/core/services/dialog_service.dart';
 import 'package:calendar/core/services/navigator_service.dart';
 
 class AddAndEditViewModel extends BaseViewModel {
+  
+
   AddAndEditViewModel();
 
   final DialogService _dialogService = locator<DialogService>();
@@ -14,6 +16,10 @@ class AddAndEditViewModel extends BaseViewModel {
   int _currentStep = 0;
   bool _complete = false;
   int _stepsLength = 0;
+  String _periodCount;
+  String _perPeriodSum;
+  
+
 
   Document get edittingDocument => this._edittingDocument;
   bool get isEditting => this._edittingDocument != null;
@@ -23,9 +29,18 @@ class AddAndEditViewModel extends BaseViewModel {
   bool get complete => this._complete;
   int get stepsLength => this._stepsLength;
 
+  set periodCount(periodCount) {
+    this._periodCount = periodCount;
+  }
+  String get periodCount => this._periodCount;
+
+  set perPeriodSum(perPeriodSum) {
+    this._perPeriodSum = perPeriodSum;
+  }
+  String get perPeriodSum => this._perPeriodSum;
+
   set edittingDocument(Document edittingDocument) {
     this._edittingDocument = edittingDocument;
-    notifyListeners();
   }
 
   set stepsLength(int value) {
@@ -61,6 +76,10 @@ class AddAndEditViewModel extends BaseViewModel {
 
   goTo(int step) {
     this.currentStep = step;
+  }
+
+  selectPeriod(dynamic period) {
+    print(period);
   }
 
   // Add ViewModel specific code here
