@@ -19,8 +19,8 @@ class AddAndEditViewModel extends BaseViewModel {
   String _periodCount;
   String _perPeriodSum;
   DateTime _firstPayDate;
-  
-
+  bool _weekendHoliday = true;
+  bool _saturdayWork = false;
 
   Document get edittingDocument => this._edittingDocument;
   bool get isEditting => this._edittingDocument != null;
@@ -29,6 +29,19 @@ class AddAndEditViewModel extends BaseViewModel {
   int get currentStep => this._currentStep;
   bool get complete => this._complete;
   int get stepsLength => this._stepsLength;
+
+  get weekendHoliday => this._weekendHoliday;
+  set weekendHoliday(bool weekendHoliday) {
+    this._weekendHoliday = weekendHoliday;
+    notifyListeners();
+  }
+  
+  get saturdayWork => this._saturdayWork;
+  set saturdayWork(bool saturdayWork) {
+    this._saturdayWork = saturdayWork;
+    notifyListeners();
+  }
+  
 
   set firstPayDate(DateTime firstPayDate) {
     this._firstPayDate = firstPayDate;

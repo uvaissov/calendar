@@ -6,6 +6,7 @@ import 'package:calendar/shared/app_colors.dart';
 import 'package:calendar/shared/shared_styles.dart';
 import 'package:calendar/shared/ui_helpers.dart';
 import 'package:calendar/widgets/busy_button.dart';
+import 'package:calendar/widgets/checkbox_field.dart';
 import 'package:calendar/widgets/date_field.dart';
 import 'package:calendar/widgets/expansion_list.dart';
 import 'package:calendar/widgets/input_field.dart';
