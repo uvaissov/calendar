@@ -18,6 +18,7 @@ class AddAndEditViewModel extends BaseViewModel {
   int _stepsLength = 0;
   String _periodCount;
   String _perPeriodSum;
+  DateTime _firstPayDate;
   
 
 
@@ -29,18 +30,24 @@ class AddAndEditViewModel extends BaseViewModel {
   bool get complete => this._complete;
   int get stepsLength => this._stepsLength;
 
-  set periodCount(periodCount) {
-    this._periodCount = periodCount;
+  set firstPayDate(DateTime firstPayDate) {
+    this._firstPayDate = firstPayDate;
+    notifyListeners();
   }
+  DateTime get firstPayDate => this._firstPayDate;
+
+  set periodCount(periodCount) => this._periodCount = periodCount;
   String get periodCount => this._periodCount;
 
   set perPeriodSum(perPeriodSum) {
     this._perPeriodSum = perPeriodSum;
+    notifyListeners();
   }
   String get perPeriodSum => this._perPeriodSum;
 
   set edittingDocument(Document edittingDocument) {
     this._edittingDocument = edittingDocument;
+    notifyListeners();
   }
 
   set stepsLength(int value) {

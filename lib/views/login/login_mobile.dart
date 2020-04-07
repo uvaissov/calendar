@@ -10,7 +10,7 @@ class _LoginMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-          backgroundColor: Colors.white,
+          //backgroundColor: Colors.white,
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 50),
             child: Column(
@@ -20,7 +20,8 @@ class _LoginMobile extends StatelessWidget {
               children: <Widget>[
                 SizedBox(
                   height: 150,
-                  child: Image.asset('assets/images/title.png'),
+                  //child: Image.asset('assets/images/title.png'),
+                  child: FlutterLogo(size: 120,),
                 ),
                 InputField(
                   placeholder: 'Email',
@@ -28,7 +29,7 @@ class _LoginMobile extends StatelessWidget {
                 ),
                 verticalSpaceSmall,
                 InputField(
-                  placeholder: 'Password',
+                  placeholder: 'Пароль',
                   password: true,
                   controller: passwordController,
                 ),
@@ -38,7 +39,7 @@ class _LoginMobile extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     BusyButton(
-                      title: 'Login',
+                      title: 'Войти',
                       busy: viewModel.busy,
                       onPressed: () {
                         viewModel.login(

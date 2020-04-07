@@ -1,3 +1,4 @@
+import 'package:calendar/shared/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class TextLink extends StatelessWidget {
@@ -11,7 +12,7 @@ class TextLink extends StatelessWidget {
       onTap: onPressed,
       child: Text(
         text,
-        style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14),
+        style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14, color: textColor),
       ),
     );
   }

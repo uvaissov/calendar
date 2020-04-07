@@ -54,6 +54,8 @@ class _AddAndEditMobile extends StatelessWidget {
                   InputField( 
                       initialValue: viewModel.periodCount,
                       onChanged: (v) => viewModel.periodCount = v,
+                      textInputType: TextInputType.number,
+                      formatter:  WhitelistingTextInputFormatter.digitsOnly,
                       placeholder: AppLocalizations.of(context).translate("edit.period.periodCount"),
                       additionalNote: AppLocalizations.of(context).translate("edit.period.periodCount"),
                       ),
@@ -61,6 +63,8 @@ class _AddAndEditMobile extends StatelessWidget {
                   InputField(
                       initialValue: viewModel.perPeriodSum,
                       onChanged: (v) => viewModel.perPeriodSum = v,
+                      textInputType: TextInputType.number,
+                      formatter:  WhitelistingTextInputFormatter.digitsOnly,
                       placeholder: AppLocalizations.of(context).translate("edit.period.perPeriodSum"),
                       additionalNote: AppLocalizations.of(context).translate("edit.period.perPeriodSum"),
                       ),
@@ -74,12 +78,23 @@ class _AddAndEditMobile extends StatelessWidget {
               subtitle: Text('Календарь платежей',style: stepSubTitleTextStyle),
               content: Column(
                 children: <Widget>[
-                  TextFormField(
-                    decoration: InputDecoration(labelText: 'Home Address'),
-                  ),
-                  TextFormField(
-                    decoration: InputDecoration(labelText: 'Postcode'),
-                  ),
+                  DateField( 
+                      value: viewModel.firstPayDate,
+                      onChanged: (v) => viewModel.firstPayDate = v,
+                      textInputType: TextInputType.datetime,
+                      //formatter:  WhitelistingTextInputFormatter.digitsOnly,
+                      placeholder: AppLocalizations.of(context).translate("edit.period.firstPayDate"),
+                      additionalNote: AppLocalizations.of(context).translate("edit.period.firstPayDate"),
+                      ),
+                  verticalSpaceSmall,
+                  InputField(
+                      initialValue: viewModel.perPeriodSum,
+                      onChanged: (v) => viewModel.perPeriodSum = v,
+                      textInputType: TextInputType.number,
+                      formatter:  WhitelistingTextInputFormatter.digitsOnly,
+                      placeholder: AppLocalizations.of(context).translate("edit.period.perPeriodSum"),
+                      additionalNote: AppLocalizations.of(context).translate("edit.period.perPeriodSum"),
+                      ),
                 ],
               ),
             ),

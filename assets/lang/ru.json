@@ -7,6 +7,6 @@
     "edit.period.month": "Ежемесячный",
     "edit.period.week": "Еженедельный",
     "edit.period.periodCount": "Всего периодов",
-    "edit.period.perPeriodSum": "Сумма платежа за период"
-    
+    "edit.period.perPeriodSum": "Сумма платежа за период",
+    "edit.period.firstPayDate": "Дата первого платежа"
 }
