@@ -18,6 +18,7 @@ class InputField extends StatefulWidget {
   final FocusNode fieldFocusNode;
   final FocusNode nextFocusNode;
   final TextInputAction textInputAction;
+  final bool multiline;
   final String additionalNote;
   final Function(String) onChanged;
   final TextInputFormatter formatter;
@@ -39,6 +40,7 @@ class InputField extends StatefulWidget {
       this.textInputType = TextInputType.text,
       this.password = false,
       this.isReadOnly = false,
+      this.multiline = false,
       this.smallVersion = false});
 
   @override
@@ -61,7 +63,8 @@ class _InputFieldState extends State<InputField> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Container(          
-          height: widget.smallVersion ? 40 : fieldHeight,          
+          //height: widget.smallVersion ? 40 : fieldHeight,
+          constraints: BoxConstraints(minHeight: widget.smallVersion ? 40 : fieldHeight),
           alignment: Alignment.centerLeft,
           padding: fieldPadding,
           decoration:
@@ -75,6 +78,7 @@ class _InputFieldState extends State<InputField> {
                   keyboardType: widget.textInputType,
                   focusNode: widget.fieldFocusNode,
                   textInputAction: widget.textInputAction,
+                  maxLines: widget.multiline ? null : 1,                  
                   onChanged: widget.onChanged,
                   initialValue: widget.initialValue,
                   inputFormatters:

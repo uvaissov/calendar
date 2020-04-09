@@ -3,6 +3,7 @@ import 'package:calendar/core/locator.dart';
 import 'package:calendar/core/models/document.dart';
 import 'package:calendar/core/services/dialog_service.dart';
 import 'package:calendar/core/services/navigator_service.dart';
+import 'package:flutter/services.dart';
 
 class AddAndEditViewModel extends BaseViewModel {
   
@@ -21,6 +22,9 @@ class AddAndEditViewModel extends BaseViewModel {
   DateTime _firstPayDate;
   bool _weekendHoliday = true;
   bool _saturdayWork = false;
+  String _description;
+  String _nameBank;
+  String _name;
 
   Document get edittingDocument => this._edittingDocument;
   bool get isEditting => this._edittingDocument != null;
@@ -30,7 +34,25 @@ class AddAndEditViewModel extends BaseViewModel {
   bool get complete => this._complete;
   int get stepsLength => this._stepsLength;
 
-  get weekendHoliday => this._weekendHoliday;
+  get description => this._description;
+  set description(String description) { 
+    this._description = description; 
+    notifyListeners(); 
+  }
+
+  get nameBank => this._nameBank;
+  set nameBank(String nameBank) { 
+    this._nameBank = nameBank; 
+    notifyListeners(); 
+  }
+
+  get name => this._name;
+  set name(String name) { 
+    this._name = name; 
+    notifyListeners(); 
+  }
+
+  get weekendHoliday => this._weekendHoliday;  
   set weekendHoliday(bool weekendHoliday) {
     this._weekendHoliday = weekendHoliday;
     notifyListeners();
@@ -78,7 +100,7 @@ class AddAndEditViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  next() {
+  next() {    
     this.currentStep + 1 != this.stepsLength
         ? goTo(this.currentStep + 1)
         : this.complete = true;
@@ -95,6 +117,7 @@ class AddAndEditViewModel extends BaseViewModel {
   }
 
   goTo(int step) {
+    SystemChannels.textInput.invokeMethod('TextInput.hide');
     this.currentStep = step;
   }
 

@@ -23,10 +23,10 @@ class _AddAndEditMobile extends StatelessWidget {
     };
 
     List<ListItem> periods = [
-    ListItem(code: 'year', name: AppLocalizations.of(context).translate("edit.period.year")),
-    ListItem(code: 'quarter', name: AppLocalizations.of(context).translate("edit.period.quarter")),
-    ListItem(code: 'month', name: AppLocalizations.of(context).translate("edit.period.month")),
-    ListItem(code: 'week', name: AppLocalizations.of(context).translate("edit.period.week")),
+    ListItem(code: 'year', name: AppLocalizations.of(context).translate("edit.year")),
+    ListItem(code: 'quarter', name: AppLocalizations.of(context).translate("edit.quarter")),
+    ListItem(code: 'month', name: AppLocalizations.of(context).translate("edit.month")),
+    ListItem(code: 'week', name: AppLocalizations.of(context).translate("edit.week")),
     ];
 
     
@@ -45,10 +45,10 @@ class _AddAndEditMobile extends StatelessWidget {
               content: Column(
                 children: <Widget>[
                   ExpansionList(
-                    placeholder: AppLocalizations.of(context).translate("edit.period.title"),
+                    placeholder: AppLocalizations.of(context).translate("edit.period"),
                     onItemSelected: viewModel.selectPeriod,
                     items: periods,                    
-                    additionalNote: AppLocalizations.of(context).translate("edit.period.title"),
+                    additionalNote: AppLocalizations.of(context).translate("edit.period"),
                   ),
                   verticalSpaceMedium,
                   InputField( 
@@ -56,8 +56,8 @@ class _AddAndEditMobile extends StatelessWidget {
                       onChanged: (v) => viewModel.periodCount = v,
                       textInputType: TextInputType.number,
                       formatter:  WhitelistingTextInputFormatter.digitsOnly,
-                      placeholder: AppLocalizations.of(context).translate("edit.period.periodCount"),
-                      additionalNote: AppLocalizations.of(context).translate("edit.period.periodCount"),
+                      placeholder: AppLocalizations.of(context).translate("edit.periodCount"),
+                      additionalNote: AppLocalizations.of(context).translate("edit.periodCount"),
                       ),
                   verticalSpaceSmall,
                   InputField(
@@ -65,8 +65,8 @@ class _AddAndEditMobile extends StatelessWidget {
                       onChanged: (v) => viewModel.perPeriodSum = v,
                       textInputType: TextInputType.number,
                       formatter:  WhitelistingTextInputFormatter.digitsOnly,
-                      placeholder: AppLocalizations.of(context).translate("edit.period.perPeriodSum"),
-                      additionalNote: AppLocalizations.of(context).translate("edit.period.perPeriodSum"),
+                      placeholder: AppLocalizations.of(context).translate("edit.perPeriodSum"),
+                      additionalNote: AppLocalizations.of(context).translate("edit.perPeriodSum"),
                       ),
                 ],
               ),
@@ -74,8 +74,8 @@ class _AddAndEditMobile extends StatelessWidget {
             Step(
               isActive: viewModel.currentStep == 1,
               state: viewModel.currentStep == 1 ? StepState.editing : StepState.indexed,
-              title: const Text('Календарь',style: stepTitleTextStyle),
-              subtitle: Text('Календарь платежей',style: stepSubTitleTextStyle),
+              title: Text(AppLocalizations.of(context).translate("edit.calendar") ,style: stepTitleTextStyle),
+              subtitle: Text(AppLocalizations.of(context).translate("edit.calendarDesc") ,style: stepSubTitleTextStyle),
               content: Column(
                 children: <Widget>[
                   DateField( 
@@ -83,35 +83,48 @@ class _AddAndEditMobile extends StatelessWidget {
                       onChanged: (v) => viewModel.firstPayDate = v,
                       textInputType: TextInputType.datetime,
                       //formatter:  WhitelistingTextInputFormatter.digitsOnly,
-                      placeholder: AppLocalizations.of(context).translate("edit.period.firstPayDate"),
-                      additionalNote: AppLocalizations.of(context).translate("edit.period.firstPayDate"),
+                      placeholder: AppLocalizations.of(context).translate("edit.firstPayDate"),
+                      additionalNote: AppLocalizations.of(context).translate("edit.firstPayDate"),
                   ),
                   verticalSpaceSmall,
-                  InputField(
-                      initialValue: viewModel.perPeriodSum,
-                      onChanged: (v) => viewModel.perPeriodSum = v,
-                      textInputType: TextInputType.number,
-                      formatter:  WhitelistingTextInputFormatter.digitsOnly,
-                      placeholder: AppLocalizations.of(context).translate("edit.period.perPeriodSum"),
-                      additionalNote: AppLocalizations.of(context).translate("edit.period.perPeriodSum"),
-                  ),
+                  CheckBoxField(smallVersion: true, placeholder: AppLocalizations.of(context).translate("edit.weekendWork"), initialValue: viewModel.weekendHoliday, onChanged: (v) => viewModel.weekendHoliday = v,),
                   verticalSpaceSmall,
-                  CheckBoxField(smallVersion: true, placeholder: 'Учитывать выходные дни недели', initialValue: viewModel.weekendHoliday, onChanged: (v) => viewModel.weekendHoliday = v,),
-                  verticalSpaceSmall,
-                  CheckBoxField(smallVersion: true, placeholder: 'Суббота рабочий день', initialValue: viewModel.saturdayWork, onChanged: (v) => viewModel.saturdayWork = v,),
+                  CheckBoxField(smallVersion: true, placeholder: AppLocalizations.of(context).translate("edit.saturdayWork"), initialValue: viewModel.saturdayWork, onChanged: (v) => viewModel.saturdayWork = v,),
                 ],
               ),
             ),
             Step(
               isActive: viewModel.currentStep == 2,
               state: viewModel.currentStep == 2 ? StepState.editing : StepState.indexed,
-              title: const Text('Описание', style: stepTitleTextStyle),
-              subtitle: Text('Дополнительная информация',style: stepSubTitleTextStyle),
+              title: Text(AppLocalizations.of(context).translate("edit.description"), style: stepTitleTextStyle),
+              subtitle: Text(AppLocalizations.of(context).translate("edit.descriptionSubtitle"),style: stepSubTitleTextStyle),
               content: Column(
                 children: <Widget>[
-                  CircleAvatar(
-                    backgroundColor: Colors.red,
-                  )
+                  InputField(
+                      initialValue: viewModel.name,
+                      onChanged: (v) => viewModel.name = v,
+                      textInputType: TextInputType.text,
+                      placeholder: AppLocalizations.of(context).translate("edit.name"),
+                      additionalNote: AppLocalizations.of(context).translate("edit.name"),
+                  ),
+                  verticalSpaceSmall,
+                  InputField(
+                      initialValue: viewModel.nameBank,
+                      onChanged: (v) => viewModel.nameBank = v,
+                      textInputType: TextInputType.text,
+                      placeholder: AppLocalizations.of(context).translate("edit.nameBank"),
+                      additionalNote: AppLocalizations.of(context).translate("edit.nameBank"),
+                  ),
+                  verticalSpaceSmall,
+                  InputField(
+                      initialValue: viewModel.description,
+                      onChanged: (v) => viewModel.description = v,
+                      textInputAction: TextInputAction.newline,
+                      textInputType: TextInputType.multiline,
+                      multiline: true,
+                      placeholder: AppLocalizations.of(context).translate("edit.descriptionLabel"),
+                      additionalNote: AppLocalizations.of(context).translate("edit.descriptionLabel"),
+                  ),
                 ],
               ),
             ),
